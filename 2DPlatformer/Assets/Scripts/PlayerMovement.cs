@@ -94,13 +94,13 @@ public class PlayerMovement : MonoBehaviour
         if (!isWallJumping)
             Flip();
     }
-    
+
     private bool IsGrounded() {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
     private bool IsWalled() {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(wallCheck.position, 0.1f, wallLayer);
     }
 
     private void Flip() {
