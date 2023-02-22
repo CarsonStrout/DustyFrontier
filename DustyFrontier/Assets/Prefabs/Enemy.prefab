@@ -221,7 +221,6 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 2
   startWaitTime: 2
-  bulletSpeed: 10
   shootingRange: 5
   visionConeAngle: 90
   projectile: {fileID: 8617303968454162602, guid: ec91e8d5df2cc16458c0258662aeea35, type: 3}

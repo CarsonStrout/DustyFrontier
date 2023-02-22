@@ -58,9 +58,13 @@ public class Lasso : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (points.Count > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.velocity += Vector2.up * 12f;
+            }
             Detatch();
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity += Vector2.up * 12f;
+
         }
     }
 

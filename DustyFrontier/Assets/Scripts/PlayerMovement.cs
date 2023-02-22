@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpBufferCounter;
 
     private bool canDash = true;
-    private bool isDashing;
+    public bool isDashing;
     [SerializeField] private float dashingPower = 20f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.5f;
@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Checks")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
+    [Space]
+    [SerializeField] private TrailRenderer tr;
+    [SerializeField] private ParticleSystem dust;
 
     private bool isFacingRight = true;
 
@@ -122,7 +126,9 @@ public class PlayerMovement : MonoBehaviour
         float originalGravity = RB.gravityScale;
         RB.gravityScale = 0f;
         RB.velocity = new Vector2(dir * dashingPower, 0f);
+        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
         RB.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
@@ -130,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(Vector2 dir)
     {
+        CreateDust();
         RB.velocity = new Vector2(RB.velocity.x, 0);
         RB.velocity += dir * jumpForce;
     }
@@ -137,5 +144,10 @@ public class PlayerMovement : MonoBehaviour
     private void Walk(Vector2 dir)
     {
         RB.velocity = new Vector2(dir.x * speed, RB.velocity.y);
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 }
