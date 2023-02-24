@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject gun;
-
-    public Transform[] patrolPoints; // an array of patrol points for the enemy to move to
+    public GameObject[] patrolPoints; // an array of patrol points for the enemy to move to
     public float speed = 2f; // the speed at which the enemy moves
     private float waitTime;
     public float startWaitTime;
@@ -33,6 +32,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        patrolPoints = GameObject.FindGameObjectsWithTag("Waypoints1");
+
         playerTransform = GameObject.FindWithTag("Player").transform;
         waitTime = startWaitTime;
 
@@ -103,9 +104,9 @@ public class EnemyController : MonoBehaviour
         else
             gun.transform.rotation = Quaternion.Euler(0, 0, -135);
 
-        transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, patrolPoints[currentPoint].position) < 0.2f)
+        if (Vector2.Distance(transform.position, patrolPoints[currentPoint].transform.position) < 0.2f)
         {
             if (waitTime <= 0)
             {

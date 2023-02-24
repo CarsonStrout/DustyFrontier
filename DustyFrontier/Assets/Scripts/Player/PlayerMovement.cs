@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float speed = 6f;
     [SerializeField] private float maxSpeed = 30f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 14f;
     [SerializeField] private float coyoteTime = 0.15f;
     [SerializeField] private float jumpBufferTime = 0.1f;
     private float coyoteTimeCounter;

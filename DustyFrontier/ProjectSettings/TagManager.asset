@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Waypoints1
+  - Waypoints2
+  - Waypoints3
+  - Waypoints4
+  - Waypoints5
   layers:
   - Default
   - TransparentFX
