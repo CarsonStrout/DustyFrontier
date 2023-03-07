@@ -32,8 +32,6 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        patrolPoints = GameObject.FindGameObjectsWithTag("Waypoints1");
-
         playerTransform = GameObject.FindWithTag("Player").transform;
         waitTime = startWaitTime;
 

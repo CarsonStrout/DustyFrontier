@@ -6,11 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - Waypoints1
-  - Waypoints2
-  - Waypoints3
-  - Waypoints4
-  - Waypoints5
+  - LassoPoint
   layers:
   - Default
   - TransparentFX
@@ -22,7 +18,7 @@ TagManager:
   - PP
   - Back
   - Middle
-  - 
+  - LassoPoint
   - 
   - 
   - 
