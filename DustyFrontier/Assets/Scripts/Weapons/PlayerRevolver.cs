@@ -70,6 +70,7 @@ public class PlayerRevolver : MonoBehaviour
         canFire = false;
         currentAmmo--;
         GameObject bullet = Instantiate(projectile, spawnPos.position, transform.rotation);
+        CinemachineShake.Instance.ShakeCamera(4, .1f);
     }
 
     private void Reload()

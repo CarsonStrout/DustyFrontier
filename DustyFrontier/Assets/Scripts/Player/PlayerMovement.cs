@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash(float dir)
     {
-        CinemachineShake.Instance.ShakeCamera(2, .1f);
+        CinemachineShake.Instance.ShakeCamera(4, .1f);
         canDash = false;
         isDashing = true;
         float originalGravity = RB.gravityScale;

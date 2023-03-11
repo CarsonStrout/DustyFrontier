@@ -79,6 +79,7 @@ public class EnemyController : MonoBehaviour
         {
             canFire = false;
             GameObject bullet = Instantiate(projectile, spawnPos.position, transform.rotation);
+            CinemachineShake.Instance.ShakeCamera(4, .1f);
         }
     }
 
