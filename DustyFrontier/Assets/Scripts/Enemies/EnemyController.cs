@@ -13,17 +13,16 @@ public class EnemyController : MonoBehaviour
     public float visionConeAngle = 90f; // the vision angle of the enemy to spot the player
     public GameObject projectile; // the prefab for the enemy's bullets
     public Transform spawnPos;
-    //float shootingInterval = 1f; // the interval between each shot, in seconds
-    //float timeSinceLastShot = 0f; // the time elapsed since the last shot
 
     private int currentPoint = 0; // the current patrol point the enemy is moving towards
     private Transform playerTransform; // a reference to the player's transform
     private Vector3 localScale; // the enemy's local scale
-    private Vector3 gunLocalScale;
+    private Vector3 gunLocalScale; // to flip the gun when moving
 
     public float timeBetweenFiring; // the time elapsed since the last shot
     private float timer;
 
+    // Weapon Parameters
     public int maxAmmo = 6;
     private int currentAmmo;
     public float reloadTime = 1f;
@@ -62,7 +61,7 @@ public class EnemyController : MonoBehaviour
 
     private void Shoot()
     {
-        Vector3 rotation = playerTransform.position - transform.position;
+        Vector3 rotation = playerTransform.position - transform.position; // aims towards the player character
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         gun.transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
@@ -85,7 +84,7 @@ public class EnemyController : MonoBehaviour
 
     private void Reload()
     {
-        gun.transform.Rotate(0, 0, 360 * 6f * Time.deltaTime);
+        gun.transform.Rotate(0, 0, 360 * 6f * Time.deltaTime); // spin animation for reload
         timer += Time.deltaTime;
         if (timer > reloadTime)
         {
@@ -104,6 +103,7 @@ public class EnemyController : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPoint].transform.position, speed * Time.deltaTime);
 
+        // patrols between two selected points, with a pause time in between
         if (Vector2.Distance(transform.position, patrolPoints[currentPoint].transform.position) < 0.2f)
         {
             if (waitTime <= 0)

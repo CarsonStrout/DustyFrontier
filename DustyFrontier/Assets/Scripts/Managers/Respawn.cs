@@ -5,7 +5,7 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public GameObject player;
-    public Transform respawnPos;
+    public Transform respawnPos; // unique respawn point assigned in inspector for each "room"
 
     private void OnTriggerEnter2D(Collider2D other)
     {

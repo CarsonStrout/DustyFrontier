@@ -10,22 +10,28 @@ public class CinemachineShake : MonoBehaviour
     public CinemachineVirtualCamera VirtualCamera { get; private set; }
     private float shakeTimer;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
         VirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    public void ShakeCamera(float intensity, float time) {
+    // can call from other scripts to add better juicyness to the feel of the game
+    public void ShakeCamera(float intensity, float time)
+    {
         CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = VirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
         shakeTimer = time;
     }
 
-    private void Update() {
-        if (shakeTimer > 0) {
+    private void Update()
+    {
+        if (shakeTimer > 0)
+        {
             shakeTimer -= Time.deltaTime;
-            if (shakeTimer <= 0) {
+            if (shakeTimer <= 0)
+            {
                 CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = VirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
                 cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;

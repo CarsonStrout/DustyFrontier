@@ -8,6 +8,7 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // will move the camera to different rooms as determined by confiners
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualCam.SetActive(true);
