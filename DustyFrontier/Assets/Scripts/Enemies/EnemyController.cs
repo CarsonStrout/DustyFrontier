@@ -86,7 +86,6 @@ public class EnemyController : MonoBehaviour
             gunParticles.Play();
         }
     }
-
     private void Reload()
     {
         gun.transform.Rotate(0, 0, 360 * 6f * Time.deltaTime); // spin animation for reload
@@ -98,7 +97,6 @@ public class EnemyController : MonoBehaviour
             canFire = true;
         }
     }
-
     void Patrol()
     {
         if (isFacingRight)
