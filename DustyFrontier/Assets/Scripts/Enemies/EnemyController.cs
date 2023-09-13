@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject gun;
     public GameObject[] patrolPoints; // an array of patrol points for the enemy to move to
+
+    public ParticleSystem gunParticles;
+
     public float speed = 2f; // the speed at which the enemy moves
     private float waitTime;
     public float startWaitTime;
@@ -80,6 +83,7 @@ public class EnemyController : MonoBehaviour
             canFire = false;
             GameObject bullet = Instantiate(projectile, spawnPos.position, transform.rotation);
             CinemachineShake.Instance.ShakeCamera(4, .1f);
+            gunParticles.Play();
         }
     }
 

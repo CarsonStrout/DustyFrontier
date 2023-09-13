@@ -8,6 +8,8 @@ public class PlayerRevolver : MonoBehaviour
     public Camera cam;
     public Transform playerPos;
 
+    public ParticleSystem gunParticles;
+
     public GameObject projectile;
     public Transform spawnPos;
 
@@ -71,6 +73,7 @@ public class PlayerRevolver : MonoBehaviour
         currentAmmo--;
         GameObject bullet = Instantiate(projectile, spawnPos.position, transform.rotation);
         CinemachineShake.Instance.ShakeCamera(4, .1f);
+        gunParticles.Play();
     }
 
     private void Reload()
